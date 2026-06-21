@@ -1,11 +1,11 @@
 const display = document.querySelector('.display')
-
+let equalsPressed = false
 let firstNum = ''
 let secondNum = ''
 let operator = null
 
 function add(num1, num2) {
-  return num1 + num2
+  return +num1 + +num2
 }
 
 function subtract(num1, num2) {
@@ -37,6 +37,13 @@ function operate(num1, num2, operator) {
 }
 
 function updateNumber(e) {
+  if (equalsPressed) {
+    equalsPressed = false
+    firstNum = e.target.textContent
+    display.textContent = firstNum
+    return
+  }
+  
   if (operator === null) {
     firstNum += e.target.textContent
     display.textContent = firstNum
@@ -48,7 +55,7 @@ function updateNumber(e) {
 }
 
 function reset() {
-  firstNum = ''
+  firstNum = operate(firstNum, secondNum, operator)
   secondNum = ''
   operator = null
 }
@@ -57,17 +64,27 @@ document.body.addEventListener('click', (e) => {
 
   if (e.target.classList.contains('number')) {
     updateNumber(e)
-    console.log(firstNum, secondNum)
+    console.log(firstNum, secondNum, equalsPressed)
   }
 
-  if (e.target.classList.contains('operator')) {
-    display.textContent = e.target.textContent
-    operator = e.target.textContent
+  if (e.target.classList.contains('operator') && firstNum !== '') {
+    if (secondNum !== '') {
+      display.textContent = operate(firstNum, secondNum, operator)
+      firstNum = operate(firstNum, secondNum, operator)
+      secondNum = ''
+      operator = e.target.textContent
+
+    } else {
+      display.textContent = e.target.textContent
+      operator = e.target.textContent
+      console.log(operator)
+    }
   }
 
-  if (e.target.classList.contains('equals')) {
+  if (e.target.classList.contains('equals') && secondNum !== '') {
     display.textContent = operate(firstNum, secondNum, operator)
-
+    equalsPressed = true
+    console.log(equalsPressed)
     reset()
   }
 })
