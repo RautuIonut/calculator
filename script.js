@@ -1,3 +1,9 @@
+const display = document.querySelector('.display')
+
+let firstNum = ''
+let secondNum = ''
+let operator = null
+
 function add(num1, num2) {
   return num1 + num2
 }
@@ -23,14 +29,45 @@ function operate(num1, num2, operator) {
       return subtract(num1, num2)
 
     case '*':
-      multiply(num1, num2)
+      return multiply(num1, num2)
 
     case '/':
-      divide(num1, num2)
+      return divide(num1, num2)
   }
 }
 
+function updateNumber(e) {
+  if (operator === null) {
+    firstNum += e.target.textContent
+    display.textContent = firstNum
 
-let firstNum
-let secondNum
-let operator
+  } else if (operator !== null) {
+    secondNum += e.target.textContent
+    display.textContent = secondNum
+  }
+}
+
+function reset() {
+  firstNum = ''
+  secondNum = ''
+  operator = null
+}
+
+document.body.addEventListener('click', (e) => {
+
+  if (e.target.classList.contains('number')) {
+    updateNumber(e)
+    console.log(firstNum, secondNum)
+  }
+
+  if (e.target.classList.contains('operator')) {
+    display.textContent = e.target.textContent
+    operator = e.target.textContent
+  }
+
+  if (e.target.classList.contains('equals')) {
+    display.textContent = operate(firstNum, secondNum, operator)
+
+    reset()
+  }
+})
