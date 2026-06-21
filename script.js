@@ -32,6 +32,7 @@ function operate(num1, num2, operator) {
       return multiply(num1, num2)
 
     case '/':
+      if (secondNum === '0') return 'ERROR'
       return divide(num1, num2)
   }
 }
@@ -43,7 +44,7 @@ function updateNumber(e) {
     display.textContent = firstNum
     return
   }
-  
+
   if (operator === null) {
     firstNum += e.target.textContent
     display.textContent = firstNum
@@ -52,12 +53,6 @@ function updateNumber(e) {
     secondNum += e.target.textContent
     display.textContent = secondNum
   }
-}
-
-function reset() {
-  firstNum = operate(firstNum, secondNum, operator)
-  secondNum = ''
-  operator = null
 }
 
 document.body.addEventListener('click', (e) => {
@@ -85,6 +80,15 @@ document.body.addEventListener('click', (e) => {
     display.textContent = operate(firstNum, secondNum, operator)
     equalsPressed = true
     console.log(equalsPressed)
-    reset()
+    firstNum = operate(firstNum, secondNum, operator)
+    secondNum = ''
+    operator = null
+  }
+
+  if (e.target.classList.contains('clear')) {
+    firstNum = ''
+    secondNum = ''
+    operator = null
+    display.textContent = ''
   }
 })
