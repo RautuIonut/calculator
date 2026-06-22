@@ -45,11 +45,11 @@ function updateNumber(e) {
     return
   }
 
-  if (operator === null) {
+  if (!operator) {
     firstNum += e.target.textContent
     display.textContent = firstNum
 
-  } else if (operator !== null) {
+  } else if (operator) {
     secondNum += e.target.textContent
     display.textContent = secondNum
   }
@@ -62,8 +62,8 @@ document.body.addEventListener('click', (e) => {
     console.log(firstNum, secondNum, equalsPressed)
   }
 
-  if (e.target.classList.contains('operator') && firstNum !== '') {
-    if (secondNum !== '') {
+  if (e.target.classList.contains('operator') && firstNum) {
+    if (secondNum) {
       display.textContent = operate(firstNum, secondNum, operator)
       firstNum = operate(firstNum, secondNum, operator)
       secondNum = ''
@@ -76,7 +76,7 @@ document.body.addEventListener('click', (e) => {
     }
   }
 
-  if (e.target.classList.contains('equals') && secondNum !== '') {
+  if (e.target.classList.contains('equals') && secondNum) {
     display.textContent = operate(firstNum, secondNum, operator)
     equalsPressed = true
     console.log(equalsPressed)
@@ -90,5 +90,18 @@ document.body.addEventListener('click', (e) => {
     secondNum = ''
     operator = null
     display.textContent = ''
+  }
+
+  if (e.target.classList.contains('delete')) {
+    if (!secondNum && !operator) {
+      firstNum = firstNum.slice(0, -1)
+      display.textContent = firstNum
+    } else if (!secondNum && operator) {
+      operator = null
+      display.textContent = ''
+    } else {
+      secondNum = secondNum.slice(0, -1)
+      display.textContent = secondNum
+    }
   }
 })
