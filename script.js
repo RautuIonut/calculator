@@ -67,12 +67,42 @@ document.body.addEventListener('click', (e) => {
       display.textContent = operate(firstNum, secondNum, operator)
       firstNum = operate(firstNum, secondNum, operator)
       secondNum = ''
-      operator = e.target.textContent
+      switch (e.target.firstElementChild.getAttribute('data-lucide')) {
+        case 'minus':
+          operator = '-'
+          break
+
+        case 'plus':
+          operator = '+'
+          break
+        
+        case 'x':
+          operator = 'x'
+          break
+
+        case 'divide':
+          operator = '/'
+      }
 
     } else {
-      display.textContent = e.target.textContent
-      operator = e.target.textContent
-      console.log(operator)
+      switch (e.target.firstElementChild.getAttribute('data-lucide')) {
+        case 'minus':
+          operator = '-'
+          break
+
+        case 'plus':
+          operator = '+'
+          break
+        
+        case 'x':
+          operator = '*'
+          break
+
+        case 'divide':
+          operator = '/'
+      }
+
+      display.textContent = operator  
     }
   }
 

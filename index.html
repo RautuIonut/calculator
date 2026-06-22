@@ -6,29 +6,48 @@
     <title>Calculator</title>
     <link rel='stylesheet' href='/style.css'>
     <script src='/script.js' defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
-    <div class="display"></div>
+    <div class='calculator'>
+      <div class="display"></div>
 
-    <button class="number button">1</button>
-    <button class="number button">2</button>
-    <button class="number button">3</button>
-    <button class="number button">4</button>
-    <button class="number button">5</button>
-    <button class="number button">6</button>
-    <button class="number button">7</button>
-    <button class="number button">8</button>
-    <button class="number button">9</button>
-    <button class="number button">0</button>
-    <button class='point'>.</button>
+      <div class="row">
+        <button class="clear button"><i data-lucide="trash"></i></button>
+        <button class='delete'><i data-lucide="delete"></i></button>
+      </div>
 
-    <button class='operator button'>+</button>
-    <button class='operator button'>-</button>
-    <button class='operator button'>*</button>
-    <button class='operator button'>/</button>
+      <div class="row">
+        <button class="number button">1</button>
+        <button class="number button">2</button>
+        <button class="number button">3</button>
+        <button class='operator button'><i data-lucide="divide"></i></button>
+      </div>
 
-    <button class="equals button">=</button>
-    <button class="clear button">C</button>
-    <button class='delete'>del</button>
+      <div class="row">
+        <button class="number button">4</button>
+        <button class="number button">5</button>
+        <button class="number button">6</button>
+        <button class='operator button'><i data-lucide="x"></i></button>
+      </div>
+
+      <div class="row">
+        <button class="number button">7</button>
+        <button class="number button">8</button>
+        <button class="number button">9</button>
+        <button class='operator button'><i data-lucide="minus"></i></button>
+      </div>
+
+      <div class="row">
+        <button class='point button'>.</button>
+        <button class="number button">0</button>
+        <button class="equals button"><i data-lucide="equal"></i></button>
+        <button class='operator button'><i data-lucide="plus"></i></button>
+      </div>
+    </div class='calculator'>
+
+      <script>
+      lucide.createIcons();
+    </script>
   </body>
 </html>
