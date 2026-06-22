@@ -57,7 +57,7 @@ function updateNumber(e) {
 
 document.body.addEventListener('click', (e) => {
 
-  if (e.target.classList.contains('number')) {
+  if (e.target.classList.contains('number') || e.target.classList.contains('point')) {
     updateNumber(e)
     console.log(firstNum, secondNum, equalsPressed)
   }
