@@ -32,7 +32,7 @@ function operate(num1, num2, operator) {
       return multiply(num1, num2)
 
     case '/':
-      if (secondNum === '0') return 'ERROR'
+      if (num2 === '0') return 'ERROR'
       return divide(num1, num2)
   }
 }
