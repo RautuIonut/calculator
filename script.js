@@ -57,7 +57,7 @@ function updateNumber(e) {
 
 document.body.addEventListener('click', (e) => {
 
-  if (e.target.classList.contains('number') || e.target.classList.contains('point')) {
+  if (e.target.classList.contains('number')) {
     updateNumber(e)
     console.log(firstNum, secondNum, equalsPressed)
   }
@@ -77,7 +77,7 @@ document.body.addEventListener('click', (e) => {
           break
         
         case 'x':
-          operator = 'x'
+          operator = '*'
           break
 
         case 'divide':
@@ -131,6 +131,18 @@ document.body.addEventListener('click', (e) => {
       display.textContent = ''
     } else {
       secondNum = secondNum.slice(0, -1)
+      display.textContent = secondNum
+    }
+  }
+
+  if (e.target.classList.contains('point')) {
+    if (firstNum && !firstNum.includes('.') && !secondNum) {
+      firstNum += '.'
+      console.log(firstNum)
+      display.textContent = firstNum
+    } else if (secondNum && !secondNum.includes('.')) {
+      secondNum += '.'
+      console.log(secondNum)
       display.textContent = secondNum
     }
   }
