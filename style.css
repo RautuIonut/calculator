@@ -2,8 +2,111 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: #E5E7EB;
 }
 
 button i, button svg {
   pointer-events: none;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0B1220;
+}
+
+.display {
+  width: 250px;
+  height: 70px;
+  padding: 1rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #0F1B33;
+  border-radius: 5px;
+  border: 1px solid #24324A;
+  cursor: default;
+  user-select: none;
+}
+
+.calculator {
+  background-color: #111A2E;
+  border: 1px solid #24324A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid #24324A;
+  padding: 1rem 1.4rem;
+  border-radius: 5px;
+  width: 60px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.row {
+  display: flex;
+  gap: 5px;
+}
+
+.button.number, .button.point {
+  background-color: #1B2A44;
+  font-size: 1rem;
+}
+
+.button.number:hover, .button.point:hover {
+  background-color: #24324A;
+}
+
+.button.point {
+  font-size: 1.6rem;
+}
+
+.button.operator {
+  background-color: #38BDF8;
+}
+
+.button.operator:hover {
+  background-color: #4dc5fa;
+}
+
+.button.equals {
+  background-color: #A3E635;
+}
+
+.button.equals:hover {
+  background-color: #a6de4b;
+}
+
+.button.clear {
+  background-color: #F59E0B;
+}
+
+.button.clear:hover {
+  background-color: #FBBF24;
+}
+
+.button.delete {
+  background-color: #64748B;
+}
+
+.button.delete:hover {
+  background-color: #94A3B8;
+}
+
+svg {
+  width: 1rem;
 }
